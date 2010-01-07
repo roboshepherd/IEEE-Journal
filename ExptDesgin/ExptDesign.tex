@@ -1,0 +1,63 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\author{Md Omar Faruque Sarker}
+\title{Experiment Design}
+\begin{document}
+\chapter{Experiment Design}
+AFM suggests that the continuous flow of information among agents is a necessary prerequisite for maintaining self-regulated division of labour in a system. However, in real world, increasing number of agents cause saturation of communication medium. Consequently, it prevents scaling the number of agents. In this work, we have hypothesised that selection of local and indirect communication strategies will address the issue of scaling. To test our hypothesis we design two kinds of robotic experiments: centralized communication experiments and distributed local communication experiments. Here we describe the both kinds of experiments with potential observables and governing equations to estimate them.
+%
+\section{Types of Experiments}
+\subsection{Centralized communication experiments}
+In this type of experiments, a centralized server  (hereafter, called as task-server) broadcasts  task-related information to all working robots. The typical contents of a task information include: location of that task in the given environment, its dynamic urgency and any other useful information. Robots use this information to  calculate the stimuli of each task. Robots select a particular task or random walking  based on a stochastic method. Robots notify task-server about their selection of a particular task by emitting appropriate status signals. This feedback enables task-server to recalculate  the urgency of all tasks and broadcast up-to-date task-information. This loop continues until the end of our experiment.
+%
+\subsection{Distributed local communication experiments}
+Unlike centralized communication experiments, this type of experiments does not rely on a central task-server. Rather each agent communicates locally with their peers.  By sensing the presence of peers, robots subscribe to the information channels of their peers. They can subscribe to all peers' channels  or a subset of channels based on a predefined communication radius.  When they subscribe to all channels they are in fact communicating globally. On the other hand, when they subscribe to a subset of channels from local peers, they are communicating locally. Communication radius determines this locality. 
+
+In this type of experiments, robots do not know task information a priori. When a robot X discovers a task A, it starts emitting information about A's location. The robots, who has previously subscribed to X's information-channel, can get this task A's information instantly. When X starts working on A, it also emits information about its engagement in this task. So other robots can determine the urgency of A by perceiving the engagement information of all working robots on task A. Thus in this type of experiments, feedback comes from peers rather than from an external server.
+
+ In each time-step, robots listen information signals from its peers for a certain amount of time and emit their own information after some processing. This processing may include: filtering out-dated information, aggregating similar types of information and so on.
+%
+\section{Experiment parameters}
+The dominant parameters of the experiments are listed below.
+\paragraph{Fixed parameters:}
+\begin{enumerate}
+\item Total number of robots (N)
+\item Experiment Area (A)
+\item Initial task urgency
+\item Increase of task urgency in each time-step
+\item Initial sensitization of robot towards a task
+\item Increase of sensitization in each time-step
+\item Payload of task information message (Pt)
+\item Payload of robot status information message (Pr)
+\end{enumerate}
+\paragraph{Variable parameters:}
+\begin{enumerate}
+\item Total number of tasks (M)
+\item Communication radius in local communication experiments (r)
+\end{enumerate}
+%
+\section{Data Collection}
+In both types of experiments the following data should be logged in each time step:
+\begin{enumerate}
+\item Number of robots working in each task
+\item Task urgency of each task 
+\item All robots' stimuli, distance and sensitization for every task
+\item All robots'  selected task ID, task start and end time, and any error occurred during task performance.
+\end{enumerate}
+
+In centralized communication experiments, both task-server and robot controller clients (hereafter termed as robot-controller) participate in data collection.  Task-server records the first two data items whereas, each robot keeps log of their individual  data items listed above.
+ 
+In distributed local communication experiments all data should be logged by  robot-controllers. Besides the above data items communication radius should also be logged.
+
+\section{Observables}
+Both kinds of experiments have two main observables under varying system conditions:
+\begin{enumerate}
+\item Time to converge the system to a steady state self-regulation
+\item Communication load 
+\end{enumerate}
+[TODO: Discuss how both of them can be calculated from equations]
+\end{document}
