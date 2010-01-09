@@ -1,16 +1,33 @@
-\documentclass[11pt,a4paper]{report}
-\usepackage[latin1]{inputenc}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{makeidx}
-\author{Md Omar Faruque Sarker}
-\title{Experiment Design}
+\documentclass{article}
+
 \begin{document}
-\chapter{Experiment Design}
+\title{Experiment Design}
+\author{
+Md Omar Faruque Sarker and Torbj{\o}rn S. Dahl\\
+{\tt mdomarfaruque.sarker|torbjorn.dahl@newport.ac.uk}\\
+Robotic Intelligence Lab, University of Wales, Newport}
+\date{}
+\maketitle
+
+\begin{abstract}
+The abstract
+\end{abstract}
+
+\section{Introduction}
+
+\section{Motivation}
+
+\section{Related Work}
+
+\section{The Attractive Field Model}
+
+\section{Multi-Robot Task Allocation with AFM}
+Describe the comms bottleneck and the centralised, local and global communication models.
+
+\section{Experiment Design}
+
 AFM suggests that the continuous flow of information among agents is a necessary prerequisite for maintaining self-regulated division of labour in a system. However, in real world, increasing number of agents cause saturation of communication medium. Consequently, it prevents scaling the number of agents. In this work, we have hypothesised that selection of local and indirect communication strategies will address the issue of scaling. To test our hypothesis we design two kinds of robotic experiments: centralized communication experiments and distributed local communication experiments. Here we describe the both kinds of experiments with potential observables and governing equations to estimate them.
 %
-\section{Types of Experiments}
 \subsection{Centralized communication experiments}
 In this type of experiments, a centralized server  (hereafter, called as task-server) broadcasts  task-related information to all working robots. The typical contents of a task information include: location of that task in the given environment, its dynamic urgency and any other useful information. Robots use this information to  calculate the stimuli of each task. Robots select a particular task or random walking  based on a stochastic method. Robots notify task-server about their selection of a particular task by emitting appropriate status signals. This feedback enables task-server to recalculate  the urgency of all tasks and broadcast up-to-date task-information. This loop continues until the end of our experiment.
 %
@@ -21,7 +38,7 @@ In this type of experiments, robots do not know task information a priori. When 
 
  In each time-step, robots listen information signals from its peers for a certain amount of time and emit their own information after some processing. This processing may include: filtering out-dated information, aggregating similar types of information and so on.
 %
-\section{Experiment parameters}
+\subsection{Experiment parameters}
 The dominant parameters of the experiments are listed below.
 \paragraph{Fixed parameters:}
 \begin{enumerate}
@@ -40,7 +57,7 @@ The dominant parameters of the experiments are listed below.
 \item Communication radius in local communication experiments (r)
 \end{enumerate}
 %
-\section{Data Collection}
+\subsection{Data Collection}
 In both types of experiments the following data should be logged in each time step:
 \begin{enumerate}
 \item Number of robots working in each task
@@ -53,7 +70,7 @@ In centralized communication experiments, both task-server and robot controller 
  
 In distributed local communication experiments all data should be logged by  robot-controllers. Besides the above data items communication radius should also be logged.
 
-\section{Observables}
+\subsection{Observables}
 Both kinds of experiments have two main observables under varying system conditions:
 \begin{enumerate}
 \item Time to converge the system to a steady state self-regulation
